@@ -1,6 +1,7 @@
 #MicroXplorer Configuration settings - do not modify
-FREERTOS.IPParameters=Tasks01
-FREERTOS.Tasks01=defaultTask,0,128,StartDefaultTask;myTask02,0,128,StartTask02
+FREERTOS.IPParameters=Tasks01,configUSE_IDLE_HOOK
+FREERTOS.Tasks01=defaultTask,0,128,StartDefaultTask;myTask02,0,128,StartTask02;idleTask,-3,128,StartIdleTask
+FREERTOS.configUSE_IDLE_HOOK=0
 File.Version=5
 KeepUserPlacement=true
 Mcu.Family=STM32F4

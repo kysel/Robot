@@ -41,6 +41,7 @@
 /* Private variables ---------------------------------------------------------*/
 osThreadId defaultTaskHandle;
 osThreadId myTask02Handle;
+osThreadId idleTaskHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -52,6 +53,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
+void StartIdleTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -105,6 +107,10 @@ int main(void)
   osThreadDef(myTask02, StartTask02, osPriorityNormal, 0, 128);
   myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
 
+  /* definition and creation of idleTask */
+  osThreadDef(idleTask, StartIdleTask, osPriorityIdle, 0, 128);
+  idleTaskHandle = osThreadCreate(osThread(idleTask), NULL);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -123,12 +129,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-  /* USER CODE END WHILE */
+	  /* USER CODE END WHILE */
 
-  /* USER CODE BEGIN 3 */
-	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-		
-	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+	  /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 
@@ -325,14 +328,15 @@ void StartDefaultTask(void const * argument)
 {
 
   /* USER CODE BEGIN 5 */
-  /* Infinite loop */
+	/* Infinite loop */
 	int i = 0;
-  for(;;)
-  {
-	  i++;
-	  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-	  osDelay(280);
-  }
+	for (;;)
+	{
+		i++;
+		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
+		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
+		osDelay(120);
+	}
   /* USER CODE END 5 */ 
 }
 
@@ -346,6 +350,19 @@ void StartTask02(void const * argument)
     osDelay(1);
   }
   /* USER CODE END StartTask02 */
+}
+
+/* StartIdleTask function */
+void StartIdleTask(void const * argument)
+{
+  /* USER CODE BEGIN StartIdleTask */
+  /* Infinite loop */
+  for(;;)
+  {
+	  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+	  osDelay(00);
+  }
+  /* USER CODE END StartIdleTask */
 }
 
 #ifdef USE_FULL_ASSERT

@@ -44,7 +44,7 @@
       <CanAcceptCommandsWhileRunning>false</CanAcceptCommandsWhileRunning>
       <MakeLogFile>false</MakeLogFile>
       <IgnoreModuleEventsWhileStepping>true</IgnoreModuleEventsWhileStepping>
-      <UseRelativePathsOnly>false</UseRelativePathsOnly>
+      <UseRelativePathsOnly>true</UseRelativePathsOnly>
       <ExitAction>None</ExitAction>
       <Features>
         <DisableAutoDetection>false</DisableAutoDetection>
