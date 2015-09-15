@@ -33,12 +33,15 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 #include "cmsis_os.h"
+#include "math.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "c:\SysGCC\arm-eabi\arm-eabi\sys-include\stdint.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
+UART_HandleTypeDef huart2;
+
 osThreadId defaultTaskHandle;
 osThreadId myTask02Handle;
 osThreadId idleTaskHandle;
@@ -51,6 +54,7 @@ osThreadId idleTaskHandle;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
 void StartIdleTask(void const * argument);
@@ -81,21 +85,21 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_USART2_UART_Init();
 
   /* USER CODE BEGIN 2 */
-
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
+	/* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
+	/* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
-  /* start timers, add new ones, ... */
+	/* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
 
   /* Create the thread(s) */
@@ -104,19 +108,19 @@ int main(void)
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of myTask02 */
-  osThreadDef(myTask02, StartTask02, osPriorityNormal, 0, 128);
-  myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
+  /*osThreadDef(myTask02, StartTask02, osPriorityNormal, 0, 128);
+  myTask02Handle = osThreadCreate(osThread(myTask02), NULL);*/
 
   /* definition and creation of idleTask */
   osThreadDef(idleTask, StartIdleTask, osPriorityIdle, 0, 128);
   idleTaskHandle = osThreadCreate(osThread(idleTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
+	/* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
+	/* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
  
 
@@ -127,12 +131,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-	  /* USER CODE END WHILE */
+	while (1)
+	{
+  /* USER CODE END WHILE */
 
-	  /* USER CODE BEGIN 3 */
-  }
+  /* USER CODE BEGIN 3 */
+	}
   /* USER CODE END 3 */
 
 }
@@ -171,6 +175,21 @@ void SystemClock_Config(void)
 
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
+}
+
+/* USART2 init function */
+void MX_USART2_UART_Init(void)
+{
+
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 1e6;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_8;
+  HAL_HalfDuplex_Init(&huart2);
 }
 
 /** Configure pins as 
@@ -320,6 +339,47 @@ void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+typedef struct {
+	uint8_t header1;
+	uint8_t header2;
+	uint8_t id;
+	uint8_t length; // length does not include first 4 bytes
+	uint8_t instruction; // or error for status packets
+	uint8_t parameter[250]; // reserve for maximum packet size
+	uint8_t checksum; // Needs to be copied at end of parameters
+} DynamixelPacket;
+
+
+void CreateMovePacket(DynamixelPacket* packet, uint8_t id, uint16_t position)
+{
+	packet->header1 = 0xff;
+	packet->header2 = 0xff;
+	packet->id = id;
+	packet->length = 5;
+	packet->instruction = 0x03; //write data
+	packet->parameter[0] = 0x1e;
+	packet->parameter[1] = position & 0xff;
+	packet->parameter[2] = (position >> 8) & 0xff;
+
+	uint8_t checksum = 0;
+	for (uint8_t i = 2; i < packet->length + 3; i++) {
+		checksum += ((uint8_t*)packet)[i];
+	}
+	checksum ^= 0xff; //xor
+	packet->checksum = checksum;
+}
+
+void GetDataToSend(DynamixelPacket* packet, uint8_t* data)
+{
+	data[0] = packet->header1;
+	data[1] = packet->header2;
+	data[2] = packet->id;
+	data[3] = packet->length;
+	data[4] = packet->instruction;
+	for (uint8_t i = 0; i != packet->length - 2; i++)
+		data[5 + i] = packet->parameter[i];
+	data[packet->length + 3] = packet->checksum;
+}
 
 /* USER CODE END 4 */
 
@@ -329,13 +389,31 @@ void StartDefaultTask(void const * argument)
 
   /* USER CODE BEGIN 5 */
 	/* Infinite loop */
-	int i = 0;
+	uint8_t i = 0;
+	DynamixelPacket packet;
+	uint8_t data[256];
+	float angle = 0.1;
+	uint16_t motAngle;
 	for (;;)
 	{
-		i++;
+		angle += 0.0005;
+		motAngle = 1024*(sin(angle)/2+0.5);
+		CreateMovePacket(&packet, 1, motAngle);
+		//HAL_StatusTypeDef q = HAL_UART_Transmit(&huart2, ((uint8_t*)&packet), packet.length + 4, 0xf);
+		GetDataToSend(&packet, data);
+		HAL_UART_Transmit(&huart2, data, packet.length + 4, 0xff);
+		/*HAL_UART_Transmit(&huart2, &packet.header1, 1, 0xff);
+		HAL_UART_Transmit(&huart2, &packet.header2, 1, 0xff);
+		HAL_UART_Transmit(&huart2, &packet.id, 1, 0xff);
+		HAL_UART_Transmit(&huart2, &packet.length, 1, 0xff);
+		HAL_UART_Transmit(&huart2, &packet.instruction, 1, 0xff);
+		HAL_UART_Transmit(&huart2, &packet.parameter[0], 1, 0xff);
+		HAL_UART_Transmit(&huart2, &packet.parameter[1], 1, 0xff);
+		HAL_UART_Transmit(&huart2, &packet.parameter[2], 1, 0xff);
+		HAL_UART_Transmit(&huart2, &packet.checksum, 1, 0xff);*/
 		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
 		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-		osDelay(120);
+		osDelay(500);
 	}
   /* USER CODE END 5 */ 
 }
@@ -344,11 +422,11 @@ void StartDefaultTask(void const * argument)
 void StartTask02(void const * argument)
 {
   /* USER CODE BEGIN StartTask02 */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	/* Infinite loop */
+	/*for (;;)
+	{
+
+	}*/
   /* USER CODE END StartTask02 */
 }
 
@@ -356,12 +434,12 @@ void StartTask02(void const * argument)
 void StartIdleTask(void const * argument)
 {
   /* USER CODE BEGIN StartIdleTask */
-  /* Infinite loop */
-  for(;;)
-  {
-	  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
-	  osDelay(00);
-  }
+	/* Infinite loop */
+	for (;;)
+	{
+		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+		osDelay(250);
+	}
   /* USER CODE END StartIdleTask */
 }
 
@@ -377,8 +455,9 @@ void StartIdleTask(void const * argument)
 void assert_failed(uint8_t* file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
+	/* User can add his own implementation to report the file name and line number,
     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+	printf("Wrong parameters value: file %s on line %d\r\n", file, line);
   /* USER CODE END 6 */
 
 }

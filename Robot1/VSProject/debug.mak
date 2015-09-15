@@ -5,7 +5,7 @@
 BINARYDIR := Debug
 
 #Additional flags
-PREPROCESSOR_MACROS := DEBUG __FPU_PRESENT STM32F407xx
+PREPROCESSOR_MACROS := DEBUG STM32F407xx DEBUG_DEFAULT_INTERRUPT_HANDLERS __FPU_PRESENT
 INCLUDE_DIRS := ../../Drivers/STM32F4xx_HAL_Driver/Inc ../../Drivers/CMSIS/Device/ST/STM32F4xx/Include ../../Drivers/CMSIS/Include ../../Inc ../../Middlewares/Third_Party/FreeRTOS/Source/include ../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
 LIBRARY_DIRS := 
 LIBRARY_NAMES := 
