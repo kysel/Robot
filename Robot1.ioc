@@ -1,6 +1,6 @@
 #MicroXplorer Configuration settings - do not modify
 FREERTOS.IPParameters=Tasks01,configUSE_IDLE_HOOK
-FREERTOS.Tasks01=defaultTask,0,128,StartDefaultTask;myTask02,0,128,StartTask02;idleTask,-3,128,StartIdleTask
+FREERTOS.Tasks01=defaultTask,0,128,StartDefaultTask;idleTask,-3,128,StartIdleTask
 FREERTOS.configUSE_IDLE_HOOK=0
 File.Version=5
 KeepUserPlacement=true
@@ -94,7 +94,7 @@ PA14.Mode=Trace-Asynchronous_SW
 PA14.Signal=SYS_JTCK-SWCLK
 PA2.GPIOParameters=GPIO_Speed,GPIO_PuPdOD,GPIO_Mode
 PA2.GPIO_Mode=GPIO_MODE_AF_OD
-PA2.GPIO_PuPdOD=GPIO_PULLUP
+PA2.GPIO_PuPdOD=GPIO_NOPULL
 PA2.GPIO_Speed=GPIO_SPEED_HIGH
 PA2.Mode=Half_duplex(single_wire_mode)
 PA2.Signal=USART2_TX

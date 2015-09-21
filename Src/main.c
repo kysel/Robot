@@ -33,17 +33,16 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 #include "cmsis_os.h"
-#include "math.h"
 
 /* USER CODE BEGIN Includes */
 #include "c:\SysGCC\arm-eabi\arm-eabi\sys-include\stdint.h"
+#include <math.h>
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
-osThreadId myTask02Handle;
 osThreadId idleTaskHandle;
 
 /* USER CODE BEGIN PV */
@@ -56,7 +55,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void const * argument);
-void StartTask02(void const * argument);
 void StartIdleTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
@@ -106,10 +104,6 @@ int main(void)
   /* definition and creation of defaultTask */
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
-
-  /* definition and creation of myTask02 */
-  /*osThreadDef(myTask02, StartTask02, osPriorityNormal, 0, 128);
-  myTask02Handle = osThreadCreate(osThread(myTask02), NULL);*/
 
   /* definition and creation of idleTask */
   osThreadDef(idleTask, StartIdleTask, osPriorityIdle, 0, 128);
@@ -182,7 +176,7 @@ void MX_USART2_UART_Init(void)
 {
 
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 1e6;
+  huart2.Init.BaudRate = 5.25e6;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -190,6 +184,7 @@ void MX_USART2_UART_Init(void)
   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart2.Init.OverSampling = UART_OVERSAMPLING_8;
   HAL_HalfDuplex_Init(&huart2);
+
 }
 
 /** Configure pins as 
@@ -416,18 +411,6 @@ void StartDefaultTask(void const * argument)
 		osDelay(500);
 	}
   /* USER CODE END 5 */ 
-}
-
-/* StartTask02 function */
-void StartTask02(void const * argument)
-{
-  /* USER CODE BEGIN StartTask02 */
-	/* Infinite loop */
-	/*for (;;)
-	{
-
-	}*/
-  /* USER CODE END StartTask02 */
 }
 
 /* StartIdleTask function */
