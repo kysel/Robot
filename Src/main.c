@@ -35,6 +35,7 @@
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN Includes */
+#include "task.h"
 #include "c:\SysGCC\arm-eabi\arm-eabi\sys-include\stdint.h"
 #include <math.h>
 /* USER CODE END Includes */
@@ -176,7 +177,7 @@ void MX_USART2_UART_Init(void)
 {
 
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 5.25e6;
+  huart2.Init.BaudRate = 1e6;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -184,7 +185,6 @@ void MX_USART2_UART_Init(void)
   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart2.Init.OverSampling = UART_OVERSAMPLING_8;
   HAL_HalfDuplex_Init(&huart2);
-
 }
 
 /** Configure pins as 
@@ -389,14 +389,21 @@ void StartDefaultTask(void const * argument)
 	uint8_t data[256];
 	float angle = 0.1;
 	uint16_t motAngle;
+	TickType_t lastWakeTime;
 	for (;;)
-	{
-		angle += 0.0005;
-		motAngle = 1024*(sin(angle)/2+0.5);
-		CreateMovePacket(&packet, 1, motAngle);
+	{	
+		lastWakeTime = xTaskGetTickCount();
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
+		angle += 0.004;
+		motAngle = 2048 + 1024*(sin(angle)/2+0.5);
+		CreateMovePacket(&packet, 0, motAngle);
 		//HAL_StatusTypeDef q = HAL_UART_Transmit(&huart2, ((uint8_t*)&packet), packet.length + 4, 0xf);
 		GetDataToSend(&packet, data);
-		HAL_UART_Transmit(&huart2, data, packet.length + 4, 0xff);
+		for (uint8_t i = 0; i < 5; i++)
+		{
+			HAL_UART_Transmit(&huart2, data, packet.length + 4, 0xff);			 
+		}
 		/*HAL_UART_Transmit(&huart2, &packet.header1, 1, 0xff);
 		HAL_UART_Transmit(&huart2, &packet.header2, 1, 0xff);
 		HAL_UART_Transmit(&huart2, &packet.id, 1, 0xff);
@@ -406,9 +413,12 @@ void StartDefaultTask(void const * argument)
 		HAL_UART_Transmit(&huart2, &packet.parameter[1], 1, 0xff);
 		HAL_UART_Transmit(&huart2, &packet.parameter[2], 1, 0xff);
 		HAL_UART_Transmit(&huart2, &packet.checksum, 1, 0xff);*/
-		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
-		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-		osDelay(500);
+		//HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
+		//HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
+		osDelayUntil(&lastWakeTime, 3);
+		//vTaskDelayUntil(&lastWakeTime, 2);
 	}
   /* USER CODE END 5 */ 
 }

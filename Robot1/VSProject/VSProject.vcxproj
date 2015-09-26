@@ -546,5 +546,6 @@
     <ClCompile Include="..\..\Src\main.c" />
     <ClCompile Include="..\..\Src\stm32f4xx_hal_msp.c" />
     <ClCompile Include="..\..\Src\stm32f4xx_it.c" />
+    <ClCompile Include="Packet.cpp" />
   </ItemGroup>
 </Project>

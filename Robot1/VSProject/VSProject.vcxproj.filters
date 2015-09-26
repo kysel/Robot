@@ -188,6 +188,9 @@
     <Filter Include="Header files\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang">
       <UniqueIdentifier>{ebd80325-83a7-44d3-aad2-98e9b6948445}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source files\Src\Dynamixel">
+      <UniqueIdentifier>{c393fbfe-b28a-439b-948e-13cb6b8f045a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xc.h">
@@ -1607,6 +1610,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c">
       <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang</Filter>
+    </ClCompile>
+    <ClCompile Include="Packet.cpp">
+      <Filter>Source files\Src\Dynamixel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
