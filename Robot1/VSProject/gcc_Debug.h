@@ -191,6 +191,9 @@
 #ifndef __DEC32_EPSILON__
 #define __DEC32_EPSILON__ 1E-6DF
 #endif
+#ifndef __OPTIMIZE__
+#define __OPTIMIZE__ 1
+#endif
 #ifndef __CHAR_UNSIGNED__
 #define __CHAR_UNSIGNED__ 1
 #endif
@@ -328,6 +331,9 @@
 #endif
 #ifndef __ULLACCUM_MAX__
 #define __ULLACCUM_MAX__ 0XFFFFFFFFFFFFFFFFP-32ULLK
+#endif
+#ifndef __GXX_RTTI
+#define __GXX_RTTI 1
 #endif
 #ifndef STM32F407xx
 #define STM32F407xx 1
@@ -519,9 +525,6 @@
 #ifndef __UHA_FBIT__
 #define __UHA_FBIT__ 8
 #endif
-#ifndef __NO_INLINE__
-#define __NO_INLINE__ 1
-#endif
 #ifndef __SFRACT_MIN__
 #define __SFRACT_MIN__ (-0.5HR-0.5HR)
 #endif
@@ -593,6 +596,9 @@
 #endif
 #ifndef __INT16_MAX__
 #define __INT16_MAX__ 0x7fff
+#endif
+#ifndef __cpp_rtti
+#define __cpp_rtti 199711
 #endif
 #ifndef __SIZE_TYPE__
 #define __SIZE_TYPE__ unsigned int
@@ -755,6 +761,9 @@
 #endif
 #ifndef __UTA_IBIT__
 #define __UTA_IBIT__ 64
+#endif
+#ifndef __EXCEPTIONS
+#define __EXCEPTIONS 1
 #endif
 #ifndef __LDBL_MANT_DIG__
 #define __LDBL_MANT_DIG__ 53
@@ -965,6 +974,9 @@
 #endif
 #ifndef __SIZEOF_DOUBLE__
 #define __SIZEOF_DOUBLE__ 8
+#endif
+#ifndef __cpp_exceptions
+#define __cpp_exceptions 199711
 #endif
 #ifndef __UFRACT_EPSILON__
 #define __UFRACT_EPSILON__ 0x1P-16UR

@@ -556,6 +556,12 @@
     <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\portmacro.h">
       <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F</Filter>
     </ClInclude>
+    <ClInclude Include="Motor.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="pokus.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c">
@@ -1572,17 +1578,11 @@
     <ClCompile Include="..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c">
       <Filter>Source files\Drivers\STM32F4xx_HAL_Driver\Src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\main.c">
-      <Filter>Source files\Src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\stm32f4xx_hal_msp.c">
       <Filter>Source files\Src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\stm32f4xx_it.c">
       <Filter>Source files\Src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\StartupFiles\startup_stm32f407xx.c">
-      <Filter>Source files\Device-specific files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\croutine.c">
       <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source</Filter>
@@ -1611,8 +1611,20 @@
     <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c">
       <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang</Filter>
     </ClCompile>
-    <ClCompile Include="Packet.cpp">
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\StartupFiles\startup_stm32f407xx.c">
+      <Filter>Source files\Device-specific files</Filter>
+    </ClCompile>
+    <ClCompile Include="Motor.cpp">
       <Filter>Source files\Src\Dynamixel</Filter>
+    </ClCompile>
+    <ClCompile Include="pokus.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Packet.c">
+      <Filter>Source files\Src\Dynamixel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\main.cpp">
+      <Filter>Source files\Src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

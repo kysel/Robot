@@ -193,9 +193,11 @@
     <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h" />
     <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h" />
     <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\portmacro.h" />
+    <ClInclude Include="Motor.hpp" />
+    <ClInclude Include="pokus.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\StartupFiles\startup_stm32f407xx.c" />
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\StartupFiles\startup_stm32f407xx.c" />
     <ClCompile Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c" />
     <ClCompile Include="..\..\Drivers\CMSIS\DSP_Lib\Source\BasicMathFunctions\arm_abs_f32.c" />
     <ClCompile Include="..\..\Drivers\CMSIS\DSP_Lib\Source\BasicMathFunctions\arm_abs_q15.c" />
@@ -543,9 +545,13 @@
     <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\queue.c" />
     <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\tasks.c" />
     <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\timers.c" />
-    <ClCompile Include="..\..\Src\main.c" />
+    <ClCompile Include="..\..\Src\main.cpp" />
     <ClCompile Include="..\..\Src\stm32f4xx_hal_msp.c" />
     <ClCompile Include="..\..\Src\stm32f4xx_it.c" />
-    <ClCompile Include="Packet.cpp" />
+    <ClCompile Include="Motor.cpp" />
+    <ClCompile Include="Packet.c" />
+    <ClCompile Include="pokus.cpp">
+      <FileType>CppCode</FileType>
+    </ClCompile>
   </ItemGroup>
 </Project>

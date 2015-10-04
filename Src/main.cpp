@@ -38,22 +38,27 @@
 #include "task.h"
 #include "c:\SysGCC\arm-eabi\arm-eabi\sys-include\stdint.h"
 #include <math.h>
+#include "pokus.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart2;
+DMA_HandleTypeDef hdma_usart2_tx;
+DMA_HandleTypeDef hdma_usart2_rx;
 
 osThreadId defaultTaskHandle;
 osThreadId idleTaskHandle;
+osSemaphoreId xRxSemaphoreHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+SemaphoreHandle_t xRxSemaphore;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void const * argument);
 void StartIdleTask(void const * argument);
@@ -84,6 +89,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_USART2_UART_Init();
 
   /* USER CODE BEGIN 2 */
@@ -92,6 +98,11 @@ int main(void)
   /* USER CODE BEGIN RTOS_MUTEX */
 	/* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
+
+  /* Create the semaphores(s) */
+  /* definition and creation of xRxSemaphore */
+  osSemaphoreDef(xRxSemaphore);
+  xRxSemaphoreHandle = osSemaphoreCreate(osSemaphore(xRxSemaphore), 1);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
 	/* add semaphores, ... */
@@ -103,7 +114,7 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityAboveNormal, 0, 1024);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of idleTask */
@@ -177,14 +188,31 @@ void MX_USART2_UART_Init(void)
 {
 
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 1e6;
+  huart2.Init.BaudRate = 2000000;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
   huart2.Init.Mode = UART_MODE_TX_RX;
   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_8;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
   HAL_HalfDuplex_Init(&huart2);
+
+}
+
+/** 
+  * Enable DMA controller clock
+  */
+void MX_DMA_Init(void) 
+{
+  /* DMA controller clock enable */
+  __DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
+  HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream6_IRQn);
+
 }
 
 /** Configure pins as 
@@ -248,6 +276,13 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pin = GPIO_PIN_0;
   GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA1 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_MEDIUM;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PA4 */
@@ -376,6 +411,37 @@ void GetDataToSend(DynamixelPacket* packet, uint8_t* data)
 	data[packet->length + 3] = packet->checksum;
 }
 
+
+void vApplicationIdleHook()
+{
+	HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+}
+/*
+void vApplicationStackOverflowHook(TaskHandle_t xTask, signed char *pcTaskName) {
+	printf("stack OVF");
+	__BKPT(255);
+};*/
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	/*uint8_t recv_data_t[255] = { 0 };
+	HAL_StatusTypeDef status = HAL_UART_Receive_DMA(&huart2, recv_data_t, 1);
+	if (status == HAL_OK)
+		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
+	*/
+	osSemaphoreRelease(xRxSemaphoreHandle);
+}
+
+void UART_DMATransmitCplt(UART_HandleTypeDef *huart)
+{
+	
+}
+
+void HAL_UART_REC_BYTE(UART_HandleTypeDef *huart)
+{
+	
+}
+
 /* USER CODE END 4 */
 
 /* StartDefaultTask function */
@@ -393,33 +459,31 @@ void StartDefaultTask(void const * argument)
 	for (;;)
 	{	
 		lastWakeTime = xTaskGetTickCount();
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
-		angle += 0.004;
+		angle += 0.04;
 		motAngle = 2048 + 1024*(sin(angle)/2+0.5);
 		CreateMovePacket(&packet, 0, motAngle);
-		//HAL_StatusTypeDef q = HAL_UART_Transmit(&huart2, ((uint8_t*)&packet), packet.length + 4, 0xf);
 		GetDataToSend(&packet, data);
-		for (uint8_t i = 0; i < 5; i++)
-		{
-			HAL_UART_Transmit(&huart2, data, packet.length + 4, 0xff);			 
-		}
-		/*HAL_UART_Transmit(&huart2, &packet.header1, 1, 0xff);
-		HAL_UART_Transmit(&huart2, &packet.header2, 1, 0xff);
-		HAL_UART_Transmit(&huart2, &packet.id, 1, 0xff);
-		HAL_UART_Transmit(&huart2, &packet.length, 1, 0xff);
-		HAL_UART_Transmit(&huart2, &packet.instruction, 1, 0xff);
-		HAL_UART_Transmit(&huart2, &packet.parameter[0], 1, 0xff);
-		HAL_UART_Transmit(&huart2, &packet.parameter[1], 1, 0xff);
-		HAL_UART_Transmit(&huart2, &packet.parameter[2], 1, 0xff);
-		HAL_UART_Transmit(&huart2, &packet.checksum, 1, 0xff);*/
+		/*
+		for (uint8_t i = 0; i < 1; i++)
+		{*/
+			HAL_StatusTypeDef status = HAL_UART_Transmit_DMA(&huart2, data, packet.length + 4);
+			if (status != HAL_OK)
+				HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
+			HAL_UART_Receive_DMA(&huart2, data, 1);
+			uint8_t retval = osSemaphoreWait(xRxSemaphoreHandle, 1);
+			if(retval==0)
+				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
+			else
+				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
+		//}
+
 		//HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
 		//HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
-		osDelayUntil(&lastWakeTime, 3);
+		osDelayUntil(&lastWakeTime, 500);
 		//vTaskDelayUntil(&lastWakeTime, 2);
-	}
+	}	
   /* USER CODE END 5 */ 
 }
 
@@ -430,7 +494,7 @@ void StartIdleTask(void const * argument)
 	/* Infinite loop */
 	for (;;)
 	{
-		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+		//HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
 		osDelay(250);
 	}
   /* USER CODE END StartIdleTask */
