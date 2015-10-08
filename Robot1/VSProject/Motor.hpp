@@ -1,7 +1,7 @@
 #pragma once
-/*class Motor
+class Motor
 {
 public:
 	Motor();
 	~Motor();
-};*/
+};

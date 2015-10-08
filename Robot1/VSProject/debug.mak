@@ -6,15 +6,15 @@ BINARYDIR := Debug
 
 #Additional flags
 PREPROCESSOR_MACROS := DEBUG STM32F407xx DEBUG_DEFAULT_INTERRUPT_HANDLERS __FPU_PRESENT
-INCLUDE_DIRS := ../../Drivers/STM32F4xx_HAL_Driver/Inc ../../Drivers/CMSIS/Device/ST/STM32F4xx/Include ../../Drivers/CMSIS/Include ../../Inc ../../Middlewares/Third_Party/FreeRTOS/Source/include ../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
+INCLUDE_DIRS := ../../Middlewares/Third_Party/FreeRTOS/Source/include ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS ../../Drivers/CMSIS/Device/ST/STM32F4xx/Include ../../Drivers/CMSIS/Include ../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F ../../Inc
 LIBRARY_DIRS := 
 LIBRARY_NAMES := 
 ADDITIONAL_LINKER_INPUTS := 
 MACOS_FRAMEWORKS := 
 LINUX_PACKAGES := 
 
-CFLAGS := -ggdb3 -ffunction-sections -O2 -x none
-CXXFLAGS := -ggdb3 -ffunction-sections -O2 -x c++ 
+CFLAGS := -ggdb3 -ffunction-sections -O2
+CXXFLAGS := -ggdb3 -ffunction-sections -O2 -x c++ -std=c++1y 
 ASFLAGS := 
 LDFLAGS := -Wl,-gc-sections
 COMMONFLAGS := 

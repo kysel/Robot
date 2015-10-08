@@ -15,8 +15,8 @@ AR := $(TOOLCHAIN_ROOT)/bin/arm-eabi-ar.exe
 OBJCOPY := $(TOOLCHAIN_ROOT)/bin/arm-eabi-objcopy.exe
 
 #Additional flags
-PREPROCESSOR_MACROS += ARM_MATH_CM4 STM32F407VG
-INCLUDE_DIRS += .
+PREPROCESSOR_MACROS += ARM_MATH_CM4 STM32F407VG stm32_flash_layout STM32F407xx
+INCLUDE_DIRS += . $(BSP_ROOT)/STM32F4xxxx/STM32F4xx_HAL_Driver/Inc $(BSP_ROOT)/STM32F4xxxx/STM32F4xx_HAL_Driver/Inc/Legacy $(BSP_ROOT)/STM32F4xxxx/CMSIS_HAL/Device/ST/STM32F4xx/Include $(BSP_ROOT)/STM32F4xxxx/CMSIS_HAL/Include $(BSP_ROOT)/STM32F4xxxx/CMSIS_HAL/RTOS/Template
 LIBRARY_DIRS += 
 LIBRARY_NAMES += compactcpp
 ADDITIONAL_LINKER_INPUTS += 
@@ -26,7 +26,7 @@ LINUX_PACKAGES +=
 CFLAGS += 
 CXXFLAGS += 
 ASFLAGS += 
-LDFLAGS +=  
+LDFLAGS +=  --specs=nosys.specs
 COMMONFLAGS += -mcpu=cortex-m4 -mthumb -mfloat-abi=hard
 LINKER_SCRIPT := $(BSP_ROOT)/STM32F4xxxx/LinkerScripts/STM32F407VG_flash.lds
 

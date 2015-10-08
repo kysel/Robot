@@ -1,6 +1,6 @@
 #include "..\..\..\..\..\..\..\SysGCC\arm-eabi\arm-eabi\sys-include\stdint.h"
 
-
+/*
 typedef struct
 {
 	uint8_t header1;
@@ -49,4 +49,4 @@ void CreateMovePacket(DynamixelPacket* packet, uint8_t id, uint16_t position)
 	}
 	checksum ^= 0xff; //xor
 	packet->checksum = checksum;
-}
+}*/
