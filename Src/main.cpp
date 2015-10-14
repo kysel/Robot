@@ -32,18 +32,19 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+#include "FreeRTOS.h"
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN Includes */
+#include <stdlib.h>
+#include <math.h>
 #include "task.h"
 #include "semphr.h"
 #include "portmacro.h"
-#include "cmsis_os.h"
-#include "c:\SysGCC\arm-eabi\arm-eabi\sys-include\stdint.h"
-#include <math.h>
+#include "Dynamixel.hpp"
 #include "Motor.hpp"
 
-	/* USER CODE END Includes */
+/* USER CODE END Includes */
 	/* Private variables ---------------------------------------------------------*/
 	UART_HandleTypeDef huart2;
 	DMA_HandleTypeDef hdma_usart2_tx;
@@ -72,7 +73,29 @@
 	/* USER CODE END PFP */
 
 	/* USER CODE BEGIN 0 */
+#pragma region DynMemory
+	void *operator new(size_t size)
+	{
+		void *p;
 
+	if (uxTaskGetNumberOfTasks())
+		p = pvPortMalloc(size);
+	else
+		p = malloc(size);
+
+	return p;
+	}
+
+		void operator delete(void *p)
+	{
+		if (uxTaskGetNumberOfTasks())
+			vPortFree(p);
+		else
+			free(p);
+
+		p = NULL;
+	}
+#pragma endregion 
 	/* USER CODE END 0 */
 
 	int main(void)
@@ -96,6 +119,7 @@
 		MX_USART2_UART_Init();
 
 		/* USER CODE BEGIN 2 */
+		Bus.Init(&huart2);
 		/* USER CODE END 2 */
 
 		/* USER CODE BEGIN RTOS_MUTEX */
@@ -396,7 +420,7 @@
 
 		uint8_t checksum = 0;
 		for (uint8_t i = 2; i < packet->length + 3; i++) {
-			checksum += ((uint8_t*)packet)[i];
+			checksum += reinterpret_cast<uint8_t*>(packet)[i];
 		}
 		checksum ^= 0xff; //xor
 		packet->checksum = checksum;
@@ -425,25 +449,6 @@
 		__BKPT(255);
 	};*/
 
-	void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-	{
-		/*uint8_t recv_data_t[255] = { 0 };
-		HAL_StatusTypeDef status = HAL_UART_Receive_DMA(&huart2, recv_data_t, 1);
-		if (status == HAL_OK)
-			HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-		*/
-		osSemaphoreRelease(xRxSemaphoreHandle);
-	}
-
-	void UART_DMATransmitCplt(UART_HandleTypeDef *huart)
-	{
-
-	}
-
-	void HAL_UART_REC_BYTE(UART_HandleTypeDef *huart)
-	{
-
-	}
 
 	/* USER CODE END 4 */
 
@@ -468,15 +473,19 @@
 			CreateMovePacket(&packet, 0, motAngle);
 			GetDataToSend(&packet, data);
 			auto q = new Motor();
+			printf("ram free %d\n", xPortGetFreeHeapSize());
 			/*
 			for (uint8_t i = 0; i < 1; i++)
 			{*/
 			
-			HAL_StatusTypeDef status = HAL_UART_Transmit_DMA(&huart2, data, packet.length + 4);
-			if (status != HAL_OK)
-				HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
-			HAL_UART_Receive_DMA(&huart2, data, 1);
-			uint8_t retval = osSemaphoreWait(xRxSemaphoreHandle, 1);
+			//HAL_StatusTypeDef status = HAL_UART_Transmit_DMA(&huart2, data, packet.length + 4);
+			Bus.Send(data, packet.length + 4);
+			uint8_t lol[11] = {0};
+			Bus.Receive(lol, 4);
+			/*if (status != HAL_OK)
+				HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);*/
+			//HAL_UART_Receive_DMA(&huart2, data, 1);
+			uint8_t retval = osSemaphoreWait(Bus.xRxSemaphoreHandle, 1);
 			if (retval == 0)
 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
 			else

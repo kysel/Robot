@@ -13,44 +13,11 @@
       <UniqueIdentifier>{67f17ba2-cea9-4b8d-92a0-0e662a8a013b}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="Header files\Drivers">
-      <UniqueIdentifier>{32fc91ad-bae1-45cb-9666-a833a747ea74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Drivers\CMSIS">
-      <UniqueIdentifier>{694917a5-329f-46e9-8d18-6f68494dada3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Drivers\CMSIS\Device">
-      <UniqueIdentifier>{2ce3ba0e-fc4d-49d2-8edb-5d9291b8e0c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Drivers\CMSIS\Device\ST">
-      <UniqueIdentifier>{773259d5-748f-4227-82a5-a264adc70e74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Drivers\CMSIS\Device\ST\STM32F4xx">
-      <UniqueIdentifier>{e3112d12-9e33-4b5d-9adb-017adff636c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include">
-      <UniqueIdentifier>{ac1ffd8a-ba51-4eb2-9bc4-690e64a56f9e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source files\Drivers">
       <UniqueIdentifier>{c082456c-5163-4f13-9c3f-65c03497d663}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Drivers\CMSIS">
       <UniqueIdentifier>{5abebded-b94e-4975-b1f6-d330f8864f56}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Drivers\CMSIS\Device">
-      <UniqueIdentifier>{a6368713-407f-4e54-a92c-4a11dc7a8d12}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Drivers\CMSIS\Device\ST">
-      <UniqueIdentifier>{1a651b75-6e07-4359-89f1-11f5134d9ae2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Drivers\CMSIS\Device\ST\STM32F4xx">
-      <UniqueIdentifier>{a983cc0b-306f-4d68-918f-55d44f07663d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Drivers\CMSIS\Device\ST\STM32F4xx\Source">
-      <UniqueIdentifier>{0d70002a-9014-4da5-a5cf-1d7f6cde6fa3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates">
-      <UniqueIdentifier>{4ea90ed8-18fa-4437-bc91-caa0835956fc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Drivers\CMSIS\DSP_Lib">
       <UniqueIdentifier>{0a4a75e8-8847-4eae-b718-e75183a72ab4}</UniqueIdentifier>
@@ -88,15 +55,6 @@
     <Filter Include="Source files\Drivers\CMSIS\DSP_Lib\Source\TransformFunctions">
       <UniqueIdentifier>{4dbaa4bd-6974-477f-a068-31eb2f83d672}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header files\Drivers\CMSIS\Include">
-      <UniqueIdentifier>{907d5643-ed10-4e63-8936-04203660bda9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Drivers\CMSIS\RTOS">
-      <UniqueIdentifier>{a6f5087f-0cfe-4f82-a54d-e52b5606ebb8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Drivers\CMSIS\RTOS\Template">
-      <UniqueIdentifier>{3e461cf7-e70f-4531-8bb2-75ee37e345b3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header files\Inc">
       <UniqueIdentifier>{13126ba3-9e22-44b7-aa49-2c9e0108e676}</UniqueIdentifier>
     </Filter>
@@ -113,176 +71,38 @@
     <Filter Include="Header files\Device-specific files">
       <UniqueIdentifier>{03b45418-1b56-463e-8fad-72702ba255b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source files\Middlewares">
-      <UniqueIdentifier>{dbab40b9-98a4-4bf2-9edb-0f1da26d7c6c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header files\Middlewares">
       <UniqueIdentifier>{746d4b86-dd18-4572-b305-6b69c78c771c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Middlewares\Third_Party">
-      <UniqueIdentifier>{35a3fbcd-d356-47a2-a1b4-498de26711ee}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Middlewares\Third_Party">
       <UniqueIdentifier>{59c557e4-166f-485f-9f38-2da5e4e59d11}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source files\Middlewares\Third_Party\FreeRTOS">
-      <UniqueIdentifier>{fda19bf1-7f5d-4e68-a3c7-52f4904f3a52}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header files\Middlewares\Third_Party\FreeRTOS">
       <UniqueIdentifier>{d14d20b7-0329-429c-ad5c-cfbd3c7ba351}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Middlewares\Third_Party\FreeRTOS\Source">
-      <UniqueIdentifier>{5a974deb-ba06-4e77-9028-a3e997702e40}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Middlewares\Third_Party\FreeRTOS\Source">
       <UniqueIdentifier>{365374f4-14e7-4e81-a7ad-42567027dc47}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source files\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS">
-      <UniqueIdentifier>{60551658-8cbf-4872-adea-41c42f8dcfde}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header files\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS">
       <UniqueIdentifier>{bc3627b0-3afb-4ba1-8094-7abbdd953078}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Middlewares\Third_Party\FreeRTOS\Source\include">
-      <UniqueIdentifier>{1d249aef-401b-4084-b884-d9d9c18f1786}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Middlewares\Third_Party\FreeRTOS\Source\include">
-      <UniqueIdentifier>{ac1e3929-e747-482a-98b1-a5b24452c82d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Middlewares\Third_Party\FreeRTOS\Source\portable">
-      <UniqueIdentifier>{c7f1f61a-0206-4ecc-893a-d5cc941f816b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Middlewares\Third_Party\FreeRTOS\Source\portable">
-      <UniqueIdentifier>{f0e8b138-5f04-4a77-9f50-3ab967fcb35a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC">
-      <UniqueIdentifier>{f4e9cfb8-791b-456a-8eea-562af4101960}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC">
-      <UniqueIdentifier>{97c04d88-a75b-4178-8085-7f64672a7010}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F">
-      <UniqueIdentifier>{f62bbea4-b1ae-4dd6-8289-10db4a174a27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F">
-      <UniqueIdentifier>{57060df7-5387-449a-b201-adc7280f00d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang">
-      <UniqueIdentifier>{362e9ae3-ca33-41ed-a5eb-037e834111be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang">
-      <UniqueIdentifier>{ebd80325-83a7-44d3-aad2-98e9b6948445}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Src\Dynamixel">
       <UniqueIdentifier>{c393fbfe-b28a-439b-948e-13cb6b8f045a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source files\Device-specific files\FreeRTOS">
+      <UniqueIdentifier>{4dd3ecdf-e604-457c-bfa7-205d183e264d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\FreeRTOS">
+      <UniqueIdentifier>{50783e1a-a4a3-4c6c-870c-02a4322e231e}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source files\Device-specific files\HAL">
-      <UniqueIdentifier>{869595d6-2938-4ae5-8e7e-d99ed809238b}</UniqueIdentifier>
+      <UniqueIdentifier>{7fe89b2a-06cf-4cd6-a3f1-84a43efb634d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Device-specific files\HAL">
-      <UniqueIdentifier>{ff17f5c6-8f02-4bdf-94d4-d41cc2cff906}</UniqueIdentifier>
+      <UniqueIdentifier>{c25773f3-c80d-475d-8e84-e4829c8c7e38}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xc.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xe.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f405xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f410cx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f410rx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f410tx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f411xe.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f415xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f417xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f427xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f437xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f439xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f469xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f479xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h">
-      <Filter>Header files\Drivers\CMSIS\Device\ST\STM32F4xx\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\arm_common_tables.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\arm_const_structs.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\arm_math.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_cm0.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_cm0plus.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_cm3.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_cm4.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_cm7.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_cmFunc.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_cmInstr.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_cmSimd.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_sc000.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_sc300.h">
-      <Filter>Header files\Drivers\CMSIS\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Drivers\CMSIS\RTOS\Template\cmsis_os.h">
-      <Filter>Header files\Drivers\CMSIS\RTOS\Template</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Inc\mxconstants.h">
       <Filter>Header files\Inc</Filter>
     </ClInclude>
@@ -295,47 +115,53 @@
     <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h">
       <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\croutine.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="Motor.hpp">
+      <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\croutine.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\deprecated_definitions.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\event_groups.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\FreeRTOS.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\list.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\mpu_wrappers.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\portable.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\projdefs.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\StackMacros.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\queue.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\semphr.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\include</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\StackMacros.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\portmacro.h">
-      <Filter>Header files\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F</Filter>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\task.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\include\timers.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\portable\GCC\ARM_CM4F\portmacro.h">
+      <Filter>Header files\Device-specific files\FreeRTOS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
       <Filter>Header files\Device-specific files\HAL</Filter>
@@ -583,14 +409,17 @@
     <ClInclude Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\CMSIS_HAL\RTOS\Template\cmsis_os.h">
       <Filter>Header files\Device-specific files\HAL</Filter>
     </ClInclude>
-    <ClInclude Include="Motor.hpp">
+    <ClInclude Include="..\..\Inc\FreeRTOSConfig.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dynamixel.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c">
-      <Filter>Source files\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Drivers\CMSIS\DSP_Lib\Source\BasicMathFunctions\arm_abs_f32.c">
       <Filter>Source files\Drivers\CMSIS\DSP_Lib\Source\BasicMathFunctions</Filter>
     </ClCompile>
@@ -1410,38 +1239,44 @@
     <ClCompile Include="..\..\Src\stm32f4xx_it.c">
       <Filter>Source files\Src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\croutine.c">
-      <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c">
-      <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\list.c">
-      <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\queue.c">
-      <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\tasks.c">
-      <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\timers.c">
-      <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c">
-      <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c">
-      <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c">
-      <Filter>Source files\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\StartupFiles\startup_stm32f407xx.c">
       <Filter>Source files\Device-specific files</Filter>
     </ClCompile>
     <ClCompile Include="Motor.cpp">
       <Filter>Source files\Src\Dynamixel</Filter>
+    </ClCompile>
+    <ClCompile Include="Packet.cpp">
+      <Filter>Source files\Src\Dynamixel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\main.cpp">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\croutine.c">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\event_groups.c">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\list.c">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\queue.c">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\tasks.c">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\timers.c">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\portable\MemMang\heap_4.c">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
       <Filter>Source files\Device-specific files\HAL</Filter>
@@ -1632,14 +1467,11 @@
     <ClCompile Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c">
       <Filter>Source files\Device-specific files\HAL</Filter>
     </ClCompile>
-    <ClCompile Include="Packet.cpp">
+    <ClCompile Include="..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Dynamixel.cpp">
       <Filter>Source files\Src\Dynamixel</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\main.cpp">
-      <Filter>Source files\Src</Filter>
-    </ClCompile>
-    <ClCompile Include="DynamicMemory.c">
-      <Filter>Source files\Src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1653,5 +1485,21 @@
     <None Include="stm32.mak">
       <Filter>Source files\Device-specific files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\License\license.txt">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </Text>
+    <Text Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\readme.txt">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </Text>
+    <Text Include="..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\FreeRTOS\Source\st_readme.txt">
+      <Filter>Source files\Device-specific files\FreeRTOS</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="VSProject.rc">
+      <Filter>Resource files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
